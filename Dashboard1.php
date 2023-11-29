@@ -1,3 +1,15 @@
+<?php
+$connect=mysqli_connect("localhost", "root", "", "dashboard");
+$query="SELECT * FROM `dashboard`";
+$execute_query=mysqli_query($connect,$query);
+for($i=1;$i<=5;$i++)
+{
+    $fetch_my_data=mysqli_fetch_row($execute_query);
+    // print_r($fetch_my_data);
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -160,7 +172,7 @@
                                 <h1>Jeet Patel</h1>
                             </div>
                             <div class="col-md-6">
-                                <img src="logo.png" alt="Logo" width="100" class="float-right">
+                                <img src="Logo.png" alt="Logo" width="50" class="float-right">
                             </div>
                         </div>
                     </div>
@@ -170,16 +182,15 @@
                         <div id="about-me" class="section-title">
                             <h2>About Me</h2>
                         </div>
-                        <p>Hello! My name is Jeet Patel
-                            I am Studying in Atmiya University at Rajkot
+                        <p><?php echo "$fetch_my_data[1]" ?>
                         </p>
                     </div>
                     <div class="dashboard-item">
                         <div id="my-skillset" class="section-title">
                             <h2>My Skillset</h2>
                         </div>
-                        <p>These are your skills and expertise.</p>
-                    </div>
+                        <p><?php echo "$fetch_my_data[2]" ?></p>
+                        </div>
                     <div class="dashboard-item">
                         <div id="assignments" class="section-title">
                             <h2>Assignments</h2>
@@ -199,7 +210,7 @@
                         <div id="project-details" class="section-title">
                             <h2>My Project Details</h2>
                         </div>
-                        <p>Details about your projects go here.</p>
+                        <p><?php echo "$fetch_my_data[3]" ?></p>
                     </div>
                 </div>
             </main>
@@ -217,3 +228,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+<?php
+break;
+}
+?>
